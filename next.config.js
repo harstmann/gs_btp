@@ -1,9 +1,15 @@
 /** @type {import('next').NextConfig} */
-const isGithubPages = process.env.GITHUB_ACTIONS || process.env.DEPLOY_TARGET === 'gh-pages'
+
+// GitHub replaces dots with underscores in Pages URLs
+// repo: harstmann/gs.btp → URL: harstmann.github.io/gs_btp
+const repoName = 'gs_btp'
 
 const nextConfig = {
   output: 'export',
-  basePath: isGithubPages ? '/gs.btp' : '',
+  // Always set basePath so assets are loaded from the correct subpath
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH || `/${repoName}`,
+  assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH || `/${repoName}/`,
+  trailingSlash: true,
   images: {
     unoptimized: true,
     remotePatterns: [
