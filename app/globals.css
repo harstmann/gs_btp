@@ -1,0 +1,192 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =====================================================
+   G.S.BTP — Design System
+   Smooth corporate aesthetic, IMPEXY-inspired
+   ===================================================== */
+
+:root {
+  /* Brand colours */
+  --color-deep-green:   #14201B;
+  --color-panel:        #1E2E27;
+  --color-amber:        #C98A3E;
+  --color-amber-dark:   #A96F2E;
+  --color-amber-light:  #E8B165;
+
+  /* Surfaces */
+  --color-white:        #FFFFFF;
+  --color-surface-50:   #F8FAF9;
+  --color-surface-100:  #F0F4F2;
+  --color-surface-200:  #E4EBE7;
+  --color-surface-400:  #9BAFA5;
+  --color-surface-500:  #6B8078;
+  --color-surface-600:  #4A5E57;
+
+  /* Shadows */
+  --shadow-card-subtle:   0 1px 3px 0 rgba(20,32,27,0.06), 0 1px 2px -1px rgba(20,32,27,0.04);
+  --shadow-card-elevated: 0 4px 12px 0 rgba(20,32,27,0.10), 0 2px 4px -1px rgba(20,32,27,0.06);
+
+  /* Radii */
+  --radius-sm:  6px;
+  --radius-md:  10px;
+  --radius-lg:  14px;
+  --radius-xl:  18px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --t-fast:   150ms ease;
+  --t-normal: 250ms ease;
+  --t-slow:   400ms ease;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  color: var(--color-deep-green);
+  background-color: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.65;
+}
+
+/* =====================================================
+   Selection
+   ===================================================== */
+::selection {
+  background-color: rgba(201, 138, 62, 0.25);
+  color: var(--color-deep-green);
+}
+
+/* =====================================================
+   Focus
+   ===================================================== */
+:focus-visible {
+  outline: 2px solid var(--color-amber);
+  outline-offset: 2px;
+}
+
+/* =====================================================
+   Scrollbar
+   ===================================================== */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--color-surface-50); }
+::-webkit-scrollbar-thumb { background: var(--color-surface-200); border-radius: var(--radius-full); }
+::-webkit-scrollbar-thumb:hover { background: var(--color-amber-light); }
+
+/* =====================================================
+   Typography
+   ===================================================== */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-fraunces, 'Fraunces', Georgia, serif);
+  color: var(--color-deep-green);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+/* =====================================================
+   Components
+   ===================================================== */
+
+/* ---- Buttons ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--radius-md);
+  transition: background-color var(--t-fast), box-shadow var(--t-fast), transform var(--t-fast);
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--color-amber);
+  color: #fff;
+  box-shadow: 0 1px 3px rgba(201,138,62,0.30);
+}
+.btn-primary:hover {
+  background: var(--color-amber-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(201,138,62,0.40);
+  color: #fff;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #fff;
+  border: 2px solid rgba(255,255,255,0.40);
+}
+.btn-secondary:hover {
+  border-color: var(--color-amber);
+  color: var(--color-amber);
+  background: rgba(201,138,62,0.08);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-deep-green);
+  border: 1.5px solid var(--color-surface-200);
+}
+.btn-outline:hover {
+  border-color: var(--color-amber);
+  color: var(--color-amber);
+}
+
+.btn-sm  { padding: 8px  16px; font-size: 13px; }
+.btn-md  { padding: 10px 20px; font-size: 14px; }
+.btn-lg  { padding: 14px 28px; font-size: 15px; }
+
+/* ---- Cards ---- */
+.card-smooth {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-surface-200);
+  box-shadow: var(--shadow-card-subtle);
+  transition: box-shadow var(--t-normal), border-color var(--t-normal), transform var(--t-normal);
+}
+.card-smooth:hover {
+  box-shadow: var(--shadow-card-elevated);
+  border-color: rgba(201,138,62,0.30);
+  transform: translateY(-2px);
+}
+
+/* ---- Badge ---- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+.badge-amber {
+  background: rgba(201,138,62,0.12);
+  border: 1px solid rgba(201,138,62,0.30);
+  color: var(--color-amber);
+}
+.badge-dark {
+  background: rgba(20,32,27,0.08);
+  border: 1px solid rgba(20,32,27,0.12);
+  color: var(--color-deep-green);
+}
+
+/* =====================================================
+   Animations
+   ===================================================== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-up { animation: fadeUp 0.55s ease-out both; }
